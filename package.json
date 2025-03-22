@@ -1,0 +1,14 @@
+{
+    "name": "nest-microservices",
+  "version": "1.0.0",
+  "scripts": {
+    "start:main": "concurrently \"npm run start:main --prefix main\"",
+    "start:product": "concurrently \"npm run start:dev --prefix product\"",
+    "start:users": "concurrently \"npm run start:dev --prefix users\"",
+    "listener": "cd main && npm run listener",
+    "start:all": "concurrently \"npm run start:main\" \"npm run start:product\" \"npm run start:users\""
+},
+    "devDependencies": {
+        "concurrently": "^9.1.2"
+    }
+}
