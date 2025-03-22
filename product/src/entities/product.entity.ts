@@ -10,7 +10,10 @@ export class Product {
 
   @Column()
   description: string;
-  
+
   @Column({ default: 0 })
   price: number;
+
+  @Column()
+  userId: number;
 }

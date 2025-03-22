@@ -1,14 +1,14 @@
 {
     "name": "nest-microservices",
-  "version": "1.0.0",
+    "version": "1.0.0",
   "scripts": {
-    "start:main": "concurrently \"npm run start:main --prefix main\"",
-    "start:product": "concurrently \"npm run start:dev --prefix product\"",
-    "start:users": "concurrently \"npm run start:dev --prefix users\"",
-    "listener": "cd main && npm run listener",
-    "start:all": "concurrently \"npm run start:main\" \"npm run start:product\" \"npm run start:users\""
-},
+    "start": "npm-run-all --parallel start:main start:product start:users",
+    "start:main": "cd main && npm run start:dev",
+    "start:listener": "cd main && npm run listener",
+    "start:product": "cd product && npm run start:dev",
+    "start:users": "cd users && npm run start:dev"
+  },
     "devDependencies": {
-        "concurrently": "^9.1.2"
+        "npm-run-all": "^4.1.5"
     }
 }

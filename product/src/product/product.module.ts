@@ -3,7 +3,7 @@ import { ProductService } from './product.service';
 import { ProductController } from './product.controller';
 import { ClientsModule, Transport } from '@nestjs/microservices';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { Product } from './product.entity';
+import { Product } from '../entities/product.entity';
 
 @Module({
   imports: [

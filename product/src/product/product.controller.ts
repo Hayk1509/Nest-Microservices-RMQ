@@ -1,7 +1,7 @@
 import { Controller, Get, Inject } from '@nestjs/common';
 import { ProductService } from './product.service';
-import { ClientProxy, EventPattern } from '@nestjs/microservices';
-import { Product } from './product.entity';
+import { MessagePattern } from '@nestjs/microservices';
+import { Product } from '../entities/product.entity';
 
 @Controller('product')
 export class ProductController {
@@ -10,14 +10,15 @@ export class ProductController {
   async getAllProducts() {
     return await this.productService.findAll();
   }
-  @EventPattern('create_new_product')
+  @MessagePattern('create_new_product')
   async createNewProduct(data: Product) {
     console.log(data);
     return await this.productService.create(data);
   }
 
-  @EventPattern('get_all_product')
+  @MessagePattern('get_product')
   async getAllProductsEvent(data: Product[]) {
-    console.log('Received event: ', data);
+    console.log('get all');
+    return this.productService.findAll();
   }
 }
