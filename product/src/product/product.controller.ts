@@ -6,19 +6,24 @@ import { Product } from '../entities/product.entity';
 @Controller('product')
 export class ProductController {
   constructor(private productService: ProductService) {}
-  @Get()
-  async getAllProducts() {
-    return await this.productService.findAll();
-  }
+
   @MessagePattern('create_new_product')
-  async createNewProduct(data: Product) {
-    console.log(data);
-    return await this.productService.create(data);
+  createNewProduct(data: Product) {
+    return this.productService.create(data);
+  }
+  @MessagePattern('get_product_by_user')
+  getProductByUser(id: number) {
+    console.log('second get product by user');
+    return this.productService.getProductByUser(id);
+  }
+  @MessagePattern('example')
+  getExample(id: string) {
+    return 'second get product by user';
   }
 
   @MessagePattern('get_product')
-  async getAllProductsEvent(data: Product[]) {
-    console.log('get all');
-    return this.productService.findAll();
+  async getAllProductsEvent() {
+    console.log('first get all products');
+    return await this.productService.findAll();
   }
 }

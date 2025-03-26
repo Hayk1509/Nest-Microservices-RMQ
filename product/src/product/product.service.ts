@@ -11,11 +11,17 @@ export class ProductService {
   ) {}
 
   async create(productData: Partial<Product>): Promise<Product> {
-    const product = this.productRepository.create(productData);
-    return this.productRepository.save(product);
+    const product = await this.productRepository.create(productData);
+    return await this.productRepository.save(product);
   }
 
   async findAll(): Promise<Product[]> {
-    return this.productRepository.find();
+    return await this.productRepository.find();
+  }
+
+  async getProductByUser(id: number): Promise<Product[]> {
+    return await this.productRepository.find({
+      where: { userId: id },
+    });
   }
 }

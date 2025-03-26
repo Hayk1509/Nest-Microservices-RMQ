@@ -20,7 +20,6 @@ async function bootstrap() {
       transform: true,
     }),
   );
-  console.log('Listener started');
   await app.listen(3000);
 }
 bootstrap();

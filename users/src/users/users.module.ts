@@ -13,7 +13,7 @@ import { ClientsModule, Transport } from '@nestjs/microservices';
         name: 'USER_SERVICE',
         transport: Transport.RMQ,
         options: {
-          urls: ['amqp://guest:guest@localhost:5672'],
+          urls: ['amqps://advfegii:m4V-yEMc_wFCb66mfHNVUo-y3Ny47AVG@possum.lmq.cloudamqp.com/advfegii'],
           queue: 'user_queue',
           queueOptions: {
             durable: false,
